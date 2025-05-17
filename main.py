@@ -17,7 +17,7 @@ app = FastAPI()
 # Allow CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8100"],  # Or replace with your frontend's origin (e.g. "http://localhost:8100")
+    allow_origins=["*"],  # Or replace with your frontend's origin (e.g. "http://localhost:8100")
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods, including OPTIONS
     allow_headers=["*"],  # Allow all headers
@@ -82,3 +82,11 @@ def predict_asthma(data: PatientData):
         "asthma_probability": float(proba),
         "asthma_prediction": int(pred)
     }
+@app.post("/predict")    
+async def options_handler():
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type",
+    }
+    return JSONResponse(content={}, headers=headers)
