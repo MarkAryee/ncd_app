@@ -1,3 +1,4 @@
+uvicor==0.34.2
 fastapi==0.115.12
 joblib==1.4.2
 numpy==1.26.4
