@@ -60,6 +60,17 @@ class PatientData(BaseModel):
 '''
 # ... add all other needed features here
  '''
+
+@app.options("/predict")    
+async def options_handler():
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type",
+    }
+    return JSONResponse(content={}, headers=headers)
+
+
 @app.post("/predict")
 def predict_asthma(data: PatientData):
     # Convert incoming data to DataFrame (or array) matching model input
@@ -82,11 +93,4 @@ def predict_asthma(data: PatientData):
         "asthma_probability": float(proba),
         "asthma_prediction": int(pred)
     }
-@app.post("/predict")    
-async def options_handler():
-    headers = {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Authorization, Content-Type",
-    }
-    return JSONResponse(content={}, headers=headers)
+    
