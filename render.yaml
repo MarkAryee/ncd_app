@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: asthma-api
+    env: python
+    buildCommand: ""
+    startCommand: ./start.sh
+    branch: main
+    region: oregon
+    plan: free
