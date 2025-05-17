@@ -5,6 +5,9 @@ import joblib
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from fastapi.responses import JSONResponse
+
+
 
 # Load model and scaler
 #model = joblib.load('random_forest_model.joblib')
