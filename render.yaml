@@ -2,7 +2,7 @@ services:
   - type: web
     name: ncd400-api
     env: python
-    buildCommand: ""
-    startCommand: ./start.sh
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port 8000"
     branch: main
     plan: free
