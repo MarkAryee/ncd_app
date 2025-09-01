@@ -1,0 +1,1 @@
+start cmd /k "uvicorn three_split:app --reload --host 0.0.0.0 --port 8000 "
