@@ -25,6 +25,20 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all methods, including OPTIONS
     allow_headers=["*"],  # Allow all headers
 )
+
+
+
+
+from mangum import Mangum  # needed for serverless
+
+
+
+@app.get("/")
+def root():
+    return {"message": "Hello from FastAPI on Vercel!"}
+
+# Vercel needs a handler
+handler = Mangum(app)
 # Define the input data model
 class PatientData(BaseModel):
     Sex: int
@@ -97,3 +111,4 @@ def predict_asthma(data: PatientData):
         "asthma_prediction": int(pred)
     }
     
+
