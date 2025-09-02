@@ -1,1 +1,0 @@
-start cmd /k "python extract_requirements.py_my_script.py"
